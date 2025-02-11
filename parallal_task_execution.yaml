@@ -1,0 +1,19 @@
+---
+- hosts: webservers
+  serial:
+    - 1
+    - 2
+    - 25%
+    - 50%
+  tasks:
+    - name: Create Group for Webcontent
+      ansible.builtin.group:
+        name: webcontent
+        state: present
+    - name: Create Webcontent Dir
+      ansible.builtin.file:
+        path: /webcontent
+        state: directory
+        group: webcontent
+        owner: ansible-devops
+        mode: '2775
