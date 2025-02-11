@@ -1,6 +1,9 @@
 ---
 - hosts: webservers
   serial:
+  #The serial keyword has a list that specifies how to slowly increase the number of parallel processes or hosts to execute against. 
+  #This play will execute on one host, then move to two hosts, then 25% of the hosts, followed by 50% of the hosts, and then by the tasks you'd like to run. 
+  #Your list can contain numbers or percentages, depending on your environment's needs.
     - 1
     - 2
     - 25%
@@ -17,4 +20,4 @@
         group: webcontent
         owner: ansible-devops
         mode: '2775
-#The serial keyword has a list that specifies how to slowly increase the number of parallel processes or hosts to execute against. This play will execute on one host, then move to two hosts, then 25% of the hosts, followed by 50% of the hosts, and then by the tasks you'd like to run. Your list can contain numbers or percentages, depending on your environment's needs.
+
